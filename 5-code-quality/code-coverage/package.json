@@ -5,7 +5,7 @@
   "main": "simple.js",
   "scripts": {
     "test": "mocha ./simpleTest.js",
-    "coverage": "nyc --reporter=text npm run test"
+    "coverage": "nyc --reporter=lcov --reporter=text --reporter=html npm run test"
   },
   "author": "",
   "license": "ISC",
