@@ -1,5 +1,6 @@
 # This is a basic workflow to experiment with repo dispatches
-# my-event is dispatched in 'go.yml'
+# go.yml dispatches an event -- NOTE -- go.yml is currently configured to trigger a DIFFERENT repo
+# hence this workflow will not be triggered
 
 name: Repository Dispatch
 on:
