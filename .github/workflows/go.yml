@@ -52,3 +52,14 @@ jobs:
       - name: Run Go Test
         run: go test ./...
         working-directory: ./5-code-quality/go
+
+  dispatch:
+    name: Dispatch event
+    needs: test
+    runs-on: ubuntu-latest # Specify where this job should run
+    steps:
+      - name: Repository Dispatch
+        uses: peter-evans/repository-dispatch@v3
+        with:
+            event-type: my-event
+            client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
