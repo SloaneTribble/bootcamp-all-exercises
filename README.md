@@ -1,1 +1,1 @@
-[![Build](https://github.com/SloaneTribble/bootcamp-all-exercises/actions/workflows/build.yml/badge.svg)](https://github.com/SloaneTribble/bootcamp-all-exercises/actions/workflows/build.yml)
+[![Go Workflow](https://github.com/SloaneTribble/bootcamp-all-exercises/actions/workflows/go.yml/badge.svg)](https://github.com/SloaneTribble/bootcamp-all-exercises/actions/workflows/go.yml)
