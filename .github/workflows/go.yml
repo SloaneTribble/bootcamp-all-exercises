@@ -52,5 +52,5 @@ jobs:
                   "action": "${{ github.action }}",
                   "workflow": "${{ github.workflow }}",
                   "sender": "${{ github.actor }}",
-                  "message": "Go program has been tested.",
+                  "message": "Go program has been tested."
                 }
