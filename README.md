@@ -1,1 +1,1 @@
-[![Quality Gate Status](http://localhost:9000/api/project_badges/measure?project=stribble-ch-5&metric=alert_status&token=sqb_d5fb4e74d2fc74d09063a4f719319be52418877b)](http://localhost:9000/dashboard?id=stribble-ch-5)
+[![Build](https://github.com/SloaneTribble/bootcamp-all-exercises/actions/workflows/build.yml/badge.svg)](https://github.com/SloaneTribble/bootcamp-all-exercises/actions/workflows/build.yml)

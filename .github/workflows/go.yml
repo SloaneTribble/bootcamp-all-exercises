@@ -1,0 +1,53 @@
+name: Go Workflow
+
+on: [push]
+
+jobs:
+  setup:
+    name: Setup Go Environment
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: '1.22.1' # Specify the Go version to match your go.mod file
+
+      # Cache Go Modules
+      # This step caches the downloaded Go modules to speed up subsequent builds.
+      - name: Cache Go Modules
+        uses: actions/cache@v3 # Specifies the use of GitHub Actions' cache utility, version 3.
+        with:
+          path: ~/go/pkg/mod # The directory where Go modules are stored, which we want to cache.
+          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }} # Unique key for the cache entry.
+          # This key is constructed using the runner's OS, a Go identifier, and a hash of the go.sum file.
+          # The hashFiles function generates a hash value that changes if the go.sum file changes, 
+          # ensuring the cache is updated when module dependencies change.
+          restore-keys: | # Used to specify fallback keys if an exact match for the key is not found.
+            ${{ runner.os }}-go-
+            # The restore-keys list allows the workflow to use partial matches for the cache key.
+            # It starts with the most specific key and can fallback to more general keys.
+            # Here, it means if the exact OS and Go dependencies cache is not found, 
+            # it can use any cache that matches the OS and Go setup, even if the dependencies have changed.
+            # This can still speed up the setup by avoiding redownloading all dependencies.
+
+
+  test:
+    name: Run Go Tests
+    needs: setup # This job runs after the setup job completes
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: '1.22.1' 
+
+      - name: Run Go Test
+        run: go test ./go/...
